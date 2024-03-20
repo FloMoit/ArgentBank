@@ -10,7 +10,6 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <Router>
           <Routes>
-            <Route path="/user/:userId" element={<Home />} />
             <Route path="/*" element={<Home isError={true} />} />
           </Routes>
         </Router>
