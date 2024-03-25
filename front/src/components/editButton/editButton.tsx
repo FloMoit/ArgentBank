@@ -23,7 +23,7 @@ function EditButton() {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
-          body: JSON.stringify({ userName: newUserName }),
+          body: JSON.stringify({ firstName: newUserName }),
         }
       );
       if (!response) {

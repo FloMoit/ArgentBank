@@ -67,7 +67,6 @@ paths:
       description: API for fetching a user profile
       parameters:
         - in: header
-          type: string
           name: Authorization
           description: Attach Bearer JWT token
           required: true
@@ -91,7 +90,6 @@ paths:
       description: API for updating a user profile
       parameters:
         - in: header
-          type: string
           name: Authorization
           description: Attach Bearer JWT token
           required: true
@@ -110,96 +108,6 @@ paths:
             $ref: "#/definitions/ApiResponse"
         "400":
           description: Invalid Fields
-        "500":
-          description: Internal Server Error
-  /transactions:
-    get:
-      security:
-        - Bearer: []
-      tags:
-        - Transaction Module
-      summary: Transaction API
-      description: API for fetching transactions of a user (current month)
-      parameters:
-        - in: header
-          type: string
-          name: Authorization
-          description: Attach Bearer JWT token
-          required: true
-      produces:
-        - application/json
-      responses:
-        "200":
-          description: Transactions retrieved successully
-          schema:
-            $ref: "#/definitions/TransactionResponse"
-        "400":
-          description: No transactions found for this month
-        "500":
-          description: Internal Server Error
-  /transaction/{id}:
-    get:
-      security:
-        - Bearer: []
-      tags:
-        - Transaction Module
-      summary: TransaSction Profile API
-      description: API for fetching specific transaction's detail
-      parameters:
-        - in: header
-          type: string
-          name: Authorization
-          description: Attach Bearer JWT token
-          required: true
-        - in: path
-          name: id
-          type: integer
-          description: Id of transaction to display
-          required: true
-      produces:
-        - application/json
-      responses:
-        "200":
-          description: Transaction retrieved successully
-          schema:
-            $ref: "#/definitions/TransactionResponse"
-        "400":
-          description: Transaction not found
-        "500":
-          description: Internal Server Error
-    put:
-      security:
-        - Bearer: []
-      tags:
-        - Transaction Module
-      summary: Transaction API
-      description: API for updating a transaction
-      parameters:
-        - in: header
-          type: string
-          name: Authorization
-          description: Attach Bearer JWT token
-          required: true
-        - in: path
-          name: id
-          type: integer
-          description: Id of transaction to display
-          required: true
-        - in: body
-          name: transaction
-          description: Details to update
-          required: true
-          schema:
-            $ref: "#/definitions/Transaction"
-      produces:
-        - application/json
-      responses:
-        "200":
-          description: Transaction updated successfully
-          schema:
-            $ref: "#/definitions/TransactionResponse"
-        "400":
-          description: Transaction not found
         "500":
           description: Internal Server Error
 securityDefinitions:
@@ -230,17 +138,6 @@ definitions:
       password:
         type: string
         description: user password
-  Transaction:
-    properties:
-      type:
-        type: string
-        description: method of payment
-      category:
-        type: string
-        description: kind of transaction
-      note:
-        type: string
-        description: more details about transaction
   ApiResponse:
     type: object
     properties:
@@ -255,26 +152,6 @@ definitions:
             type: string
           email:
             type: string
-  TransactionResponse:
-    type: object
-    properties:
-      id:
-        type: integer
-      date:
-        type: string
-        format: date-time
-      description:
-        type: string
-      amount:
-        type: number
-      balance:
-        type: number
-      type:
-        type: string
-      category:
-        type: string
-      note:
-        type: string
   LoginResponse:
     type: object
     properties:

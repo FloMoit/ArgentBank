@@ -16,10 +16,10 @@ function User() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   useEffect(() => {
-    /*if(!token){
-            navigate('/signin');
-            return
-        }*/
+    if (!token) {
+      navigate("/signin");
+      return;
+    }
     const fetchDataUser = async () => {
       try {
         const response = await fetch(
