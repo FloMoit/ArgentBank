@@ -6,7 +6,7 @@ import getOrUpdateUserInfos from "../redux/UserInfos/getOrUpdateUserInfosService
 import LoadingSpinner from "../components/LoadingSpinner";
 import EditUserNameForm from "../components/EditUserNameForm";
 
-function Profil() {
+function Dashboard() {
   const [isEditMode, setEditMode] = useState<boolean>(false);
 
   const changeEditMode = () => setEditMode((previousState) => !previousState);
@@ -79,4 +79,4 @@ function Profil() {
   );
 }
 
-export default Profil;
+export default Dashboard;

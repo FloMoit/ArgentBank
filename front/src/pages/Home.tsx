@@ -1,4 +1,4 @@
-import HeroBanner from "../components/Banner";
+import Banner from "../components/Banner";
 import BankFeature from "../components/BankFeature";
 import chatIcon from "../assets/icon/icon-chat.png";
 import moneyIcon from "../assets/icon/icon-money.png";
@@ -31,7 +31,7 @@ function Home() {
 
   return (
     <main>
-      <HeroBanner />
+      <Banner />
 
       <section className="features">
         <h2 className="sr-only">Features</h2>

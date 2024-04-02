@@ -32,7 +32,7 @@ function Header() {
         pageName = "Login";
         break;
       case "/profile":
-        pageName = "Profile";
+        pageName = "Dashboard";
         break;
       default:
         pageName = "Error";

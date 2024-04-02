@@ -6,10 +6,10 @@ import {
 } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import HomePage from "./pages/Home";
-import LoginPage from "./pages/Login";
-import ErrorPage from "./pages/Error";
-import ProfilPage from "./pages/Profil";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Error from "./pages/Error";
+import Dashboard from "./pages/Dashboard";
 
 function Layout() {
   return (
@@ -27,23 +27,23 @@ const defineRoutes = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <HomePage />,
+        element: <Home />,
       },
       {
         path: "/login",
-        element: <LoginPage />,
+        element: <Login />,
       },
       {
         path: "/profile",
-        element: <ProfilPage />,
+        element: <Dashboard />,
       },
       {
         path: "/forbidden",
-        element: <ErrorPage errorCode="401" />,
+        element: <Error errorCode="401" />,
       },
       {
         path: "/error",
-        element: <ErrorPage errorCode="404" />,
+        element: <Error errorCode="404" />,
       },
       {
         path: "*",
