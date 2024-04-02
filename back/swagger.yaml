@@ -119,7 +119,7 @@ paths:
       tags:
         - Transaction Module
       summary: Transaction API
-      description: API for fetching transactions of a user (current month)
+      description: Fetch all transactions of a user (current month)
       parameters:
         - in: header
           type: string
@@ -144,7 +144,7 @@ paths:
       tags:
         - Transaction Module
       summary: TransaSction Profile API
-      description: API for fetching specific transaction's detail
+      description: Fetch a specific transaction's detail
       parameters:
         - in: header
           type: string
@@ -167,13 +167,48 @@ paths:
           description: Transaction not found
         "500":
           description: Internal Server Error
+    post:
+      security:
+        - Bearer: []
+      tags:
+        - Transaction Module
+      summary: Transaction API
+      description: Add a new transaction
+      parameters:
+        - in: header
+          type: string
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
+        - in: path
+          name: id
+          type: integer
+          description: Id of transaction to display
+          required: true
+        - in: body
+          name: transaction
+          description: Details to update
+          required: true
+          schema:
+            $ref: "#/definitions/Transaction"
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: Transaction updated successfully
+          schema:
+            $ref: "#/definitions/TransactionResponse"
+        "400":
+          description: Transaction not found
+        "500":
+          description: Internal Server Error
     put:
       security:
         - Bearer: []
       tags:
         - Transaction Module
       summary: Transaction API
-      description: API for updating a transaction
+      description: Update a transaction
       parameters:
         - in: header
           type: string
@@ -237,10 +272,13 @@ definitions:
         description: method of payment
       category:
         type: string
-        description: kind of transaction
+        description: type of transaction
       note:
         type: string
-        description: more details about transaction
+        description: details about transaction
+      amount:
+        type: number
+        description: Amount of a transaction
   ApiResponse:
     type: object
     properties:

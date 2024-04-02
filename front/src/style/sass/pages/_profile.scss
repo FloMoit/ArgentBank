@@ -1,0 +1,20 @@
+/* Profile Page */
+
+.profile-header {
+  color: #28313c;
+  margin-bottom: 2rem;
+
+  h2 {
+    font-size: 2em;
+    margin: 0.67em 0;
+  }
+
+  &__edit-button {
+    border-color: $main-color;
+    background-color: $main-color;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px;
+    line-height: normal;
+  }
+}

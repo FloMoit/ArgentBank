@@ -1,0 +1,66 @@
+/* EditUserNameForm component */
+
+.edit-user-form {
+  display: grid;
+  grid-template-areas:
+    "FNI FNI"
+    "LNI LNI"
+    "SB CB";
+  align-items: center;
+  column-gap: 20px;
+  row-gap: 15px;
+
+  @include for-device(tablet) {
+    grid-template-areas:
+      "FNI LNI"
+      "SB CB";
+  }
+
+  input {
+    padding: 10px;
+    font-size: 1.2rem;
+    border: 2px solid #b3bcc7;
+    color: #bfc8d3;
+    border-radius: 5px;
+  }
+
+  button {
+    font-weight: bold;
+    padding: 10px;
+    line-height: normal;
+    width: 30%;
+    max-width: 120px;
+    border-radius: 3px;
+    border-color: #a9ace3;
+  }
+
+  &__first-name {
+    @include for-device(tablet) {
+      justify-self: flex-end;
+    }
+  }
+
+  &__last-name {
+    @include for-device(tablet) {
+      justify-self: flex-start;
+    }
+  }
+
+  .submit-btn {
+    justify-self: flex-end;
+    background-color: $main-color;
+    color: #fff;
+  }
+
+  .cancel-btn {
+    justify-self: flex-start;
+    background-color: #fff;
+    color: $main-color;
+  }
+}
+
+.inputs-error-msg {
+  margin-top: 10px;
+  color: red;
+  line-height: 1rem;
+}
