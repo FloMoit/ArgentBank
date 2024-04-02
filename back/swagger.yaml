@@ -69,7 +69,7 @@ paths:
         - in: header
           type: string
           name: Authorization
-          description: Attach Bearer JWT token
+          description: Attach Bearer token
           required: true
       produces:
         - application/json
@@ -93,7 +93,7 @@ paths:
         - in: header
           type: string
           name: Authorization
-          description: Attach Bearer JWT token
+          description: Attach Bearer token
           required: true
         - in: body
           name: body
@@ -118,13 +118,13 @@ paths:
         - Bearer: []
       tags:
         - Transaction Module
-      summary: Transaction API
+      summary: Transaction get API
       description: Fetch all transactions of a user (current month)
       parameters:
         - in: header
           type: string
           name: Authorization
-          description: Attach Bearer JWT token
+          description: Attach Bearer token
           required: true
       produces:
         - application/json
@@ -137,53 +137,23 @@ paths:
           description: No transactions found for this month
         "500":
           description: Internal Server Error
-  /transaction/{id}:
-    get:
-      security:
-        - Bearer: []
-      tags:
-        - Transaction Module
-      summary: TransaSction Profile API
-      description: Fetch a specific transaction's detail
-      parameters:
-        - in: header
-          type: string
-          name: Authorization
-          description: Attach Bearer JWT token
-          required: true
-        - in: path
-          name: id
-          type: integer
-          description: Id of transaction to display
-          required: true
-      produces:
-        - application/json
-      responses:
-        "200":
-          description: Transaction retrieved successully
-          schema:
-            $ref: "#/definitions/TransactionResponse"
-        "400":
-          description: Transaction not found
-        "500":
-          description: Internal Server Error
     post:
       security:
         - Bearer: []
       tags:
         - Transaction Module
-      summary: Transaction API
+      summary: Transaction add API
       description: Add a new transaction
       parameters:
         - in: header
           type: string
           name: Authorization
-          description: Attach Bearer JWT token
+          description: Attach Bearer token
           required: true
         - in: path
-          name: id
+          name: userId
           type: integer
-          description: Id of transaction to display
+          description: Id of transaction owner
           required: true
         - in: body
           name: transaction
@@ -207,18 +177,18 @@ paths:
         - Bearer: []
       tags:
         - Transaction Module
-      summary: Transaction API
+      summary: Transaction update API
       description: Update a transaction
       parameters:
         - in: header
           type: string
           name: Authorization
-          description: Attach Bearer JWT token
+          description: Attach Bearer token
           required: true
         - in: path
-          name: id
+          name: transactionId
           type: integer
-          description: Id of transaction to display
+          description: Id of transaction to update
           required: true
         - in: body
           name: transaction
@@ -237,6 +207,37 @@ paths:
           description: Transaction not found
         "500":
           description: Internal Server Error
+  /transaction/{id}:
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - Transaction Module
+      summary: Transaction one get API
+      description: Fetch a specific transaction's detail
+      parameters:
+        - in: header
+          type: string
+          name: Authorization
+          description: Attach Bearer token
+          required: true
+        - in: path
+          name: id
+          type: integer
+          description: Id of transaction to display
+          required: true
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: Transaction retrieved successully
+          schema:
+            $ref: "#/definitions/TransactionResponse"
+        "400":
+          description: Transaction not found
+        "500":
+          description: Internal Server Error
+
 securityDefinitions:
   Bearer:
     type: apiKey
