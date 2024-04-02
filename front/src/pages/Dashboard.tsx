@@ -32,9 +32,7 @@ function Dashboard() {
   if (errorSelector) {
     return (
       <main>
-        <p className="error-msg">
-          Due to an error, your data could not be loaded.
-        </p>
+        <p className="error-msg">Error loading data.</p>
         <p className="error-msg">Please try again later.</p>
       </main>
     );
